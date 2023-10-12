@@ -24,7 +24,7 @@ Example Usage (reference bulk RNA-seq version):
 
 ```
 nextflow run main.nf --samplesheet $PWD/samples.analysis.csv \
-        --regionvcf "/grid/preall/home/jpreall/references/VCF/hg38/genome1K.phase3.SNP_AF5e2.chr1toX.hg38.vcf.gz"  \
+        --regionvcf "path/to/vcf.gz"  \
         --publishDir $PWD/published_results \
         --workflow "ref_bams" \
         --samplesheet_bams $PWD/bams_samplesheet.csv \
