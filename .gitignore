@@ -1,0 +1,15 @@
+#run nextflow scripts and logs:
+
+run_nextflow.sh*
+
+# ipynb stuff
+
+*.ipynb_checkpoints*
+*/.ipynb_checkpoints*
+
+# Nextflow logs
+.nextflow.log*
+
+# personal sample sheets:
+samples.analysis.csv
+bams_samplesheet.csv
