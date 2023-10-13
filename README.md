@@ -2,7 +2,7 @@
 
 Internal WIP nextflow pipeline for Genetic Demultiplexing of 10x Genomics libraries
 
-Example Usage (reference free version):
+## Example Usage (reference free version):
 
 ```
 nextflow run cregan727/nf-core-laughinggoggles -r main --samplesheet $PWD/samples.analysis.csv \
@@ -20,7 +20,10 @@ Sample1,/path/to/Projectdir/count/Sample1/outs/possorted_genome_bam.bam,/path/to
 Sample2,/path/to/Projectdir/count/Sample2/outs/possorted_genome_bam.bam,/path/to/Projectdir/count/Sample2/outs/filtered_feature_bc_matrix/barcodes.tsv.gz
 ```
 
-Example Usage (reference bulk RNA-seq version):
+__________________________________________________________________
+
+
+## Example Usage (reference bulk RNA-seq version):
 
 ```
 nextflow run cregan727/nf-core-laughinggoggles -r main --samplesheet $PWD/samples.analysis.csv \
@@ -37,9 +40,9 @@ When the samples.analysis.csv is the same and the bams_samplesheet.csv looks lik
 /path/to/Aligned.sortedByCoord.out.bam,Sample1
 /path/to/other/Aligned.sortedByCoord.out.bam,Sample2
 ```
+__________________________________________________________________
 
-
-Example Usage (reference plate based bulk RNA-seq):
+## Example Usage (reference plate based bulk RNA-seq):
 
 ```
 nextflow run cregan727/nf-core-laughinggoggles -r main --samplesheet $PWD/samples.analysis.csv \
