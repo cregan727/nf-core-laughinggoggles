@@ -31,6 +31,7 @@ workflow {
     params.samplesheet = params.samplesheet ?: 'samplesheet.csv'
     params.regionvcf = params.regionvcf ?: 'regions.vcf.gz'
     params.publishDir = params.publishDir ?: 'Results'
+    params.samplesheet_plate = params.samplesheet_plate ?: 'sample_sheet_plate.csv'
 
 
 }
