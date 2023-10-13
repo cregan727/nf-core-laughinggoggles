@@ -23,7 +23,7 @@ Sample2,/path/to/Projectdir/count/Sample2/outs/possorted_genome_bam.bam,/path/to
 Example Usage (reference bulk RNA-seq version):
 
 ```
-nextflow run main.nf --samplesheet $PWD/samples.analysis.csv \
+nextflow run cregan727/nf-core-laughinggoggles -r main --samplesheet $PWD/samples.analysis.csv \
         --regionvcf "path/to/vcf.gz"  \
         --publishDir $PWD/published_results \
         --workflow "ref_bams" \

@@ -20,7 +20,6 @@ workflow ref_bams {
 
     // take input as bam files and run cellsnp-lite
     preprocess_output = process_bam_samplesheet(params.samplesheet_bams)
-    preprocess_output.view()
     bam_cellsnp = cellsnp_lite_bams(preprocess_output, file(params.regionvcf))
 
 
