@@ -3,6 +3,7 @@ nextflow.enable.dsl=2
 
 include { reffree_workflow } from './subworkflows/wf-reference_free.nf'
 include { ref_bams } from './subworkflows/wf-reference_bams.nf'
+include { ref_plate } from './subworkflows/wf-reference_plate.nf'
 
 workflowChoice = params.workflow ?: 'ref_free'
 
