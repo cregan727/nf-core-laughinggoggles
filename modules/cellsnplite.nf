@@ -115,3 +115,76 @@ cellsnp-lite \
 
 // cellsnp-lite jplate input
 
+
+process cellsnp_lite_plate {
+
+    /*
+
+        This process takes as input a single STAR mapped bam
+        from a plate, barcodes list, and a regionvcf and does
+        variant calling ahead of reference based demultiplexing
+        with vireo
+
+    */
+
+
+
+  label 'process_high'
+
+  publishDir params.publishDir, mode: 'copy'
+
+  cpus 20
+
+container {
+    container = 'jeffverboon/cellsnplite:latest'
+}
+
+  input:
+    tuple file(bam),
+        file(bai),
+        file(barcodes),
+    file(regionvcf)
+
+  output:
+    file "outdir/cellSNP.cells.vcf.gz"
+
+  script:
+    """
+cut -d ',' -f 1 $barcodes > barcodes_for_cellsnp.csv
+
+cellsnp-lite \
+	-s $bam \
+        -b barcodes_for_cellsnp.csv \
+        -O outdir/ \
+        -R $params.regionvcf \
+        -p 20 \
+        --minMAF 0.1 \
+        --minCOUNT 20 \
+        --genotype \
+        --gzip
+        
+declare -A barcode_to_sample
+
+while IFS=',' read -r barcode sample; do
+  if [[ ! -z "\$sample" ]]; then
+    barcode_to_sample["\$barcode"]="\$sample"
+  else
+    echo "No sample names found. Returning cellSNP.cells.vcf.gz with barcodes"
+    echo "If this was not what you expected confirm there are no blank lines in your barcodes file"
+    echo "and there is a sample name for every barcode in your barcodes file has a sample name"
+    exit 0  # Exit with a non-error exit code
+  fi
+done < barcode_key.csv
+
+  for barcode in "\${!barcode_to_sample[@]}"; do
+    sample="\${barcode_to_sample[\$barcode]}"
+    gunzip -c outdir/cellSNP.cells.vcf.gz | sed "s/\$barcode/\$sample/g" | gzip > outdir/cellSNP.cells_modified.vcf.gz
+    mv outdir/cellSNP.cells_modified.vcf.gz outdir/cellSNP.cells.vcf.gz
+  done
+
+
+    """
+
+
+}
+
