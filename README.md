@@ -1,4 +1,4 @@
-# nf-core-laughinggoggles
+# nf-laughing-goggles
 
 Internal WIP nextflow pipeline for Genetic Demultiplexing of 10x Genomics libraries
 
