@@ -8,9 +8,6 @@ include { vireo_ref } from '../modules/vireo.nf'
 input_data = Channel.fromPath(params.samplesheet)
                       .splitCsv(header: true, sep: ',')
 
-input_ref = Channel.fromPath(params.samplesheet_plate)
-                      .splitCsv(header: false, sep: ',')
-
 workflow ref_plate {
     /*
 
