@@ -23,7 +23,7 @@ process vireo_reffree {
     params.numsamples
 
     output:
-    stdout
+    path "*/vireo_results"
     
     script:
     """
