@@ -174,7 +174,7 @@ while IFS=',' read -r barcode sample; do
     echo "and there is a sample name for every barcode in your barcodes file has a sample name"
     exit 0  # Exit with a non-error exit code
   fi
-done < barcode_key.csv
+done < $barcodes
 
   for barcode in "\${!barcode_to_sample[@]}"; do
     sample="\${barcode_to_sample[\$barcode]}"
