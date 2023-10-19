@@ -18,9 +18,12 @@ workflow ref_plate {
     */
 
 
+
     // take input as bam files and run cellsnp-lite
     //preprocess_output = process_bam_samplesheet(params.samplesheet_bams)
     //preprocess_output.view()
+    input_ref = Channel.fromPath(params.samplesheet_plate)
+                            .splitCsv(header: false, sep: ',')
     bam_cellsnp = input_ref.map { sheet ->
     tuple(file(sheet[0]), file(sheet[0] + ".bai"), file(sheet[1]), file(params.regionvcf))
 } | cellsnp_lite_plate
