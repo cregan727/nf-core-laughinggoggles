@@ -58,9 +58,17 @@ When the samples.analysis.csv is the same and the jplate_samplesheet.csv looks l
 ```
 /path/to/Aligned.sortedByCoord.out.bam,/path/to/barcode.csv
 ```
-
 And the barcode csv can either be a 10x style barcode.tsv.gz file or like this:
 ```
 ATCGTAGC,Sample1
 TCGGTCTA,Sample2
 ```
+
+
+____________________________________________________________________
+## A Note on Sequencing Depth
+
+While we have not done extensive testing on how deeply to sequence your reference samples or single cell libraries for ideal genetic demutiplexing, if you have a large number of unassigned samples and a lower than expected number of doublets it may be a sign that you should sequence your reference and/or single cell library deeper to increase confidence in the vireo calls. Here is an example of an experiment in which the reference libraries were sequenced to an average of 5M reads per cell (and the 10x 3' V2 libraries were sequenced to 56,000 reads per cell) and downsampled ahead of cellsnp-vireo with the pipeline described above. When only a small number of reads were used (< 1 M reads per sample) you can see the number of unassigned samples is much larger and the number of doublets is pretty low, but as the sequencing depth increases more cells get assigned to their samples and more doublets get identified.
+
+![How_deep_should_I_seq_plates](https://github.com/cregan727/nf-laughing-goggles/assets/68451521/8014d16b-3ba5-48c2-84d4-df398c6df2f7)
+
