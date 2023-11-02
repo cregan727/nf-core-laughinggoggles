@@ -74,4 +74,7 @@ While we have not done extensive testing on how deeply to sequence your referenc
 ![how_deep_to_seq_scrna](https://github.com/cregan727/nf-laughing-goggles/assets/68451521/688514f6-81a2-4580-91ec-5c3659fe73cc)
 
 
+### Acknowledgments
 
+Xianjie Huang, Yuanhua Huang, Cellsnp-lite: an efficient tool for genotyping single cells, Bioinformatics, 2021;, btab358, https://doi.org/10.1093/bioinformatics/btab358  
+Yuanhua Huang, Davis J. McCarthy, and Oliver Stegle. Vireo: Bayesian demultiplexing of pooled single-cell RNA-seq data without genotype reference. Genome Biology 20, 273 (2019)
