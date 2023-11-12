@@ -67,7 +67,7 @@ process vireo_ref {
     vireo \
         -c "$sample_outdir" \
         -d "$bam_cellsnp" \
-        -o "\$sample_name/vireo_results" \
+        -o "demux/\$sample_name/vireo_results" \
         --randSeed 2 \
         -p 20
     """
