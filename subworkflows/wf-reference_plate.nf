@@ -1,4 +1,4 @@
-cinclude { cellsnp_lite_10x } from '../modules/cellsnplite.nf'
+include { cellsnp_lite_10x } from '../modules/cellsnplite.nf'
 include { cellsnp_lite_plate } from '../modules/cellsnplite.nf'
 include { vireo_ref } from '../modules/vireo.nf'
 
@@ -37,7 +37,9 @@ workflow ref_plate {
 
 
     //run reference based vireo
-    wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
-
+    //wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
+    scatter (path in wf1_out) {
+        vireo_ref(bam_cellsnp, path)
+    }
 
 }
