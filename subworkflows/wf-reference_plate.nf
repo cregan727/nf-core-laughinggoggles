@@ -34,6 +34,9 @@ workflow ref_plate {
     tuple(row['Sample'], file(row['bam']), file(row['bam'] + ".bai"), file(row['barcode']), file(params.regionvcf))
 } | cellsnp_lite_10x
 
+
+    wf1_out.view()
+
     //run reference based vireo
     wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
 
