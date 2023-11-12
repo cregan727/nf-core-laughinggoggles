@@ -36,8 +36,7 @@ workflow ref_plate {
 
 
     //run reference based vireo
-    temp_output = wf1_out.map {path -> vireo_ref(bam_cellsnp, path)} 
+    wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
 
-    temp_output.collect()
 
 }
