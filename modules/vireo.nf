@@ -58,17 +58,17 @@ process vireo_ref {
     path sample_outdir 
 
     output:
-    path "demux/*/vireo_results"
+    path "*/vireo_results"
 
     script:
     """
     sample_name=\$(basename $sample_outdir)
-    mkdir -p demux/\$sample_name
+    mkdir \$sample_name_demux
 
     vireo \
         -c "$sample_outdir" \
         -d "$bam_cellsnp" \
-        -o "demux/\$sample_name/vireo_results" \
+        -o "\$sample_name_demux/vireo_results" \
         --randSeed 2 \
         -p 20
     """
