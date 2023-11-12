@@ -29,8 +29,10 @@ workflow ref_bams {
 } | cellsnp_lite_10x
 
     //run reference based vireo
-    wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
-
+    //wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
+    scatter (path in wf1_out) {
+        vireo_ref(bam_cellsnp, path)
+    }
 
 }
 
