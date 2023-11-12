@@ -37,7 +37,7 @@ workflow ref_plate {
     collected_wf1_out = wf1_out.collect()
 
     //run reference based vireo
-    temp_output = collected_wf1_out.view().into {path -> vireo_ref(bam_cellsnp, path)} 
+    temp_output = collected_wf1_out.subscribe {path -> vireo_ref(bam_cellsnp, path)} 
 
     temp_output.view()
 
