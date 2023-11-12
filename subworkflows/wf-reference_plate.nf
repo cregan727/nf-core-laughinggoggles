@@ -40,5 +40,4 @@ workflow ref_plate {
     wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
 
 
-
 }
