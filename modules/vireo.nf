@@ -63,6 +63,7 @@ process vireo_ref {
     script:
     """
     sample_name=\$(basename $sample_outdir)
+    mkdir -p demux/\$sample_name
 
     vireo \
         -c "$sample_outdir" \
