@@ -58,7 +58,7 @@ process vireo_ref {
     path sample_outdir 
 
     output:
-    path "*/vireo_results"
+    path "demux/*/vireo_results"
 
     script:
     """
