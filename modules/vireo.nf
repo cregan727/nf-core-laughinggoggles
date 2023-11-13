@@ -55,7 +55,7 @@ process vireo_ref {
     
     input:
     path bam_cellsnp
-    path sample_outdir 
+    each path(sample_outdir) 
 
     output:
     path "*/vireo_results"
