@@ -29,8 +29,10 @@ workflow ref_bams {
 } | cellsnp_lite_10x
 
     //run reference based vireo
-    wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
-    wf1_out.collect().view()
+    results = wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
+
+    // collect the results before proceeding
+    results.view().collect()
 
 }
 
