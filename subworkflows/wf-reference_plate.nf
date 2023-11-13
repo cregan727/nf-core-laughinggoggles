@@ -38,11 +38,11 @@ workflow ref_plate {
     //run reference based vireo
     //wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
 
-    wf1_out.collect().split(",").each { path ->
+    wf1_out.each { path ->
         vireo_ref(bam_cellsnp, path)
     }
 
-    wf1_out.view()
+    wf1_out.collect().view()
 
 
 }
