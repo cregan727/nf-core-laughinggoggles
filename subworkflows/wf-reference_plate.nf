@@ -38,7 +38,7 @@ workflow ref_plate {
     //run reference based vireo
     //wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
 
-    wf1_out.view().map { path ->
+    scatter (path in wf1_out) {
         vireo_ref(bam_cellsnp, path)
     }
     wf1_out.view()
