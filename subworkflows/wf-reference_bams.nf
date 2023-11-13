@@ -29,9 +29,9 @@ workflow ref_bams {
 } | cellsnp_lite_10x
 
     //run reference based vireo
-    wf1_out.view().map { path ->
-        vireo_ref(bam_cellsnp, path)
-    }
-
+    //wf1_out.view().map { path ->
+    //    vireo_ref(bam_cellsnp, path)
+    //}
+    wf1_out.view()
 }
 
