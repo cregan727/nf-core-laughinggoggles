@@ -30,6 +30,7 @@ workflow ref_bams {
 
     //run reference based vireo
     wf1_out.each {path -> vireo_ref(bam_cellsnp, path)} 
+    wf1_out.collect().view()
 
 }
 
