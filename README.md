@@ -1,11 +1,11 @@
-# nf-laughing-goggles
+# nf-decoder-ring
 
 Internal WIP nextflow pipeline for Genetic Demultiplexing of 10x Genomics libraries
 
 ## Example Usage (reference free version):
 
 ```
-nextflow run cregan727/nf-laughing-goggles -r main --samplesheet $PWD/samples.analysis.csv \
+nextflow run cregan727/nf-decoder-ring -r main --samplesheet $PWD/samples.analysis.csv \
         --regionvcf "path/to/vcf.gz"  \
         --publishDir $PWD/published_results \
         --workflow "ref_free" --numsamples 2 \
@@ -26,7 +26,7 @@ __________________________________________________________________
 ## Example Usage (reference bulk RNA-seq version):
 
 ```
-nextflow run cregan727/nf-laughing-goggles -r main --samplesheet $PWD/samples.analysis.csv \
+nextflow run cregan727/nf-decoder-ring -r main --samplesheet $PWD/samples.analysis.csv \
         --regionvcf "path/to/vcf.gz"  \
         --publishDir $PWD/published_results \
         --workflow "ref_bams" \
@@ -45,7 +45,7 @@ __________________________________________________________________
 ## Example Usage (reference plate based bulk RNA-seq):
 
 ```
-nextflow run cregan727/nf-laughing-goggles -r main --samplesheet $PWD/samples.analysis.csv \
+nextflow run cregan727/nf-decoder-ring -r main --samplesheet $PWD/samples.analysis.csv \
         --regionvcf "path/to/vcf.gz"   \
         --publishDir $PWD/published_results \
         --workflow "ref_plate" \
