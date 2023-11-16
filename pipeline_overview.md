@@ -1,8 +1,8 @@
 # How does nf-decoder-ring work?
 
 nf-decoder-ring is a [Nextflow](https://www.nextflow.io/) based pipeline
-that takes advantage of docker containers to make running a CellSNP -\>
-Vireo genetic demultiplexing workflow simple and easy. The inputs are a
+that takes advantage of docker containers to make running a [CellSNP](https://cellsnp-lite.readthedocs.io/en/latest/manual.html) -\>
+[Vireo](https://vireosnp.readthedocs.io/en/latest/manual.html) genetic demultiplexing workflow simple and easy. The inputs are a
 sample sheet containing the paths to the 10x bam files we want to
 demultiplex and if available a second sample sheet defining the paths to
 any reference bam files and metadata. The pipeline is designed to work
