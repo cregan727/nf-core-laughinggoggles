@@ -126,13 +126,13 @@ The first thing that happens after you run your command is Nextflow will
 parse your sample sheets and begin the ref_plate workflow. First it
 splits the reference sample sheet into columns which correspond to the
 path to the bam file, uses this to find the path to the bam.bai file,
-and the path to a sample metadata sheet. It uses this and the regionvcf
+and the path to a sample metadata file. It uses this and the regionvcf
 file as input into the cellsnp_lite_plate process.
 
-It also similarly breaks down the samplesheet from the 10x samples to
+It also similarly parses the samplesheet from the 10x samples to
 run the process cellsnp_lite_10x.
 
-When both of these processes are complete is runs vireo_ref using the
+When both of these processes are complete it runs vireo_ref using the
 outputs from both processes.
 
 ```         
@@ -275,10 +275,11 @@ doublet 647
 unassigned      994
 ```
 
-A PDF heatmap of how genetically similar the patients are to each other
+A PDF heatmap of how genetically similar the patients are to each other:
+<img width="819" alt="GenoProbDelta" src="https://github.com/cregan727/nf-decoder-ring/assets/68451521/286434c0-8c61-4ba5-b60b-029bd6e84bf3">
 
-Two TSVs of the probability each cell is each individual donor or a
-doublet of two donors
+
+Two TSVs of the probability each cell is each individual donor or a doublet of two donors
 
 A log file
 
@@ -291,3 +292,19 @@ AAACCTGAGACTGTAA-1      Celiac  1.00e+00        4.22e-05        58      Celiac  
 AAACCTGAGGTCATCT-1      Osteo   9.79e-01        1.81e-02        33      Osteo   Celiac,Osteo    -1.408
 AAACCTGAGTATTGGA-1      Healthy 1.00e+00        1.50e-05        63      Healthy Healthy,Osteo   -8.527
 ```
+
+The CellSNP output is also visible in this folder though it is unlikely you'll need anything from this for downstream analysis. Here is an excerpt from the CellSNP documentation explaining what the output files are. 
+
+```
+cellSNP.base.vcf.gz: a VCF file listing genotyped SNPs and aggregated AD & DP infomation (without GT).
+
+cellSNP.samples.tsv: a TSV file listing cell barcodes or sample IDs.
+
+cellSNP.tag.AD.mtx: a file in “Matrix Market exchange formats”, containing the allele depths of the alternative (ALT) alleles.
+
+cellSNP.tag.DP.mtx: a file in “Matrix Market exchange formats”, containing the sum of allele depths of the reference and alternative alleles (REF + ALT).
+
+cellSNP.tag.OTH.mtx: a file in “Matrix Market exchange formats”, containing the sum of allele depths of all the alleles other than REF and ALT.
+```
+
+When running CellSNP on the reference bam we also generate a VCF file which contains the genotype for each of the samples which is used as an input for Vireo. This can be found in the output folder of the publishDIR.
