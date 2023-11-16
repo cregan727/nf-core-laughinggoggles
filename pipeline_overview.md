@@ -275,7 +275,7 @@ doublet 647
 unassigned      994
 ```
 
-A PDF heatmap of how genetically similar the patients are to each other:
+A PDF heatmap of how genetically similar the donors are to each other:
 <img width="819" alt="GenoProbDelta" src="https://github.com/cregan727/nf-decoder-ring/assets/68451521/286434c0-8c61-4ba5-b60b-029bd6e84bf3">
 
 
