@@ -219,10 +219,10 @@ cellsnp-lite \
 Vireo takes the cellsnp called genotypes and the references and assigns
 each cell to a sample. Here is what the vireo command looks like:
 
-The inputs are the reference vcf defined by the first input bam_cellsnp
-and each path(sample_outdir) which indicates that I want to run this
-process for each item in that channel. Then the output is just the path
-to the vireo output directory.
+The inputs are the reference vcf (here named bam_cellsnp since that's the process it comes from)
+and each path(sample_outdir). The 'each' indicates that I want to run this
+process for each item in that channel which in this case is a 1 cellsnp output directory for each 10x lane. 
+The output is the path to the vireo output directory.
 
 ```         
 process vireo_ref {
