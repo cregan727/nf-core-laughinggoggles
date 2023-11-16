@@ -11,7 +11,7 @@ demultiplexing when the reference includes 1 bam per sample, reference
 based demultiplexing when the reference is from a bam where each sample
 is barcoded.
 
-![nf-decoder-ring](https://github.com/cregan727/nf-decoder-ring/assets/68451521/27cad32e-e712-464c-ae91-456113d43ff6)
+![nf-decoder-ring-wf](https://github.com/cregan727/nf-decoder-ring/assets/68451521/7486fd6b-682a-46d7-aa70-9320cde25daf)
 
 Below we'll walk through an example of an experiment that
 uses plate based RNA-seq as a reference and how nf-decoder-ring can be
