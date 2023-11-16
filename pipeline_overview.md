@@ -125,8 +125,7 @@ nextflow run cregan727/nf-decoder-ring -r main --samplesheet $PWD/samples.analys
 The first thing that happens after you run your command is Nextflow will
 parse your sample sheets and begin the ref_plate workflow. First it
 splits the reference sample sheet into columns which correspond to the
-path to the bam file, uses this to find the path to the bam.bai file,
-and the path to a sample metadata file. It uses this and the regionvcf
+path to the bam file and the path to a sample metadata file. It uses this and the regionvcf
 file as input into the cellsnp_lite_plate process.
 
 It also similarly parses the samplesheet from the 10x samples to
@@ -170,14 +169,14 @@ workflow ref_plate {
 Here is an example of what the cellsnp_lite_10x process looks like.
 
 At the top it defines the publish directory, the number of CPUs and
-where I want it to pull it's docker container from. Then I specify the
+where I want it to pull its' docker container from. Then I specify the
 inputs which are the sample name, the bam, bam index, cellranger called
 cell barcodes, and the region vcf file. Then I define the outputs I want
 to capture as the path "\${sample}\_outdir/". Finally I define the
 actual script to run cellsnp-lite which is a command line tool.
 
 cellSNP genotypes either the single cells or the reference and generates
-a vcf file for use in vireo.
+a vcf file/mtx files for use in vireo.
 
 ```         
 process cellsnp_lite_10x {
