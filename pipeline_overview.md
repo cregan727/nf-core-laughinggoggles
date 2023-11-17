@@ -17,6 +17,119 @@ Below we'll walk through an example of an experiment that
 uses plate based RNA-seq as a reference and how nf-decoder-ring can be
 used to demultiplex the samples.
 
+## First a Quick Note About Nextflow
+
+Nextflow is a popular tool in bioinformatics that lowers the barrier to
+entry for many different types of analysis by:
+
+-   Stringing together multiple tools with a single command
+
+-   With Docker/Singularity running many different tools without doing
+    any installation
+
+-   Mediating parallelization of different steps of the workflow
+
+-   Making it easy to share pipelines over github
+
+## Using Nextflow Pipelines
+
+Nextflow is a workflow management tool supported by a community of
+developers who create publicly available open source pipelines. A major
+resource for finding these pipelines is
+[nf-core](https://nf-co.re/pipelines) which provides 50+ community
+developed bioinformatics pipelines for common workflows like RNA-seq,
+ATAC-seq, scRNA-seq and more...
+
+with simple commands like this:
+
+```         
+nextflow run nf-core/rnaseq -profile docker -params-file params.yaml
+```
+
+and provide a web interface to help you make the params.yaml
+
+This is not the only source of nextflow pipelines ONT supplies many long
+read specific pipelines in nextflow form
+[here](https://github.com/epi2me-labs) for workflows like:
+
+-   [wf-single-cell](https://github.com/epi2me-labs/wf-single-cell)
+    (analysis of single cell long read data)
+
+-   [wf-somatic-variation](https://github.com/epi2me-labs/wf-somatic-variation)
+    (analysis of SNVs, Indels, SV etc from long read data)
+
+-   and more...
+
+And you can also get pipelines from your collaborators, lab mates or
+write them yourself (though these might not be as simple to run).
+
+## Writing Nextflow Pipelines
+
+Running a nextflow pipeline is really easy, writing one is more
+challenging. Nextflow is written in a domain-specific language (DSL)
+based on the Groovy/Java programming languages. But you don't really
+need to know know either of those languages to make a Nextflow pipeline,
+you mainly need to learn a few of the nextflow basics.
+
+There are three basic units of Nextflow: Channels, Processes and
+Workflows.
+
+A Channel is how Nextflow stores the files being passed between the
+different steps of your pipeline.
+
+A Process is what you're telling the program to do and consists of
+inputs, outputs, optional conditionals about when to run it, and the
+script to be executed. The script can be written in a wide variety of
+scripting languages. They're often written in Bash but can also be
+written in R, Python, Perl, Ruby and others. Each process starts in a
+fresh directory and uses symbolic links to bring in the files from the
+channels you define as input. It runs the script and then adds the files
+or directories you defined as "output" into an output channel for use in
+future processes.
+
+```         
+process < name > {
+
+  [ directives ]
+
+  input:
+    < process inputs >
+
+  output:
+    < process outputs >
+
+  when:
+    < condition >
+
+  [script|shell|exec]:
+    < user script to be executed >
+
+}
+```
+
+A workflow chains everything together. In a workflow you define the flow
+of your pipeline. Each process input should be clearly defined either in
+the process(inputs) syntax or by piping the outputs of one function from
+one to another. The order of the lines doesn't matter. Nextflow will
+start any process that has available inputs.
+
+```         
+workflow my_pipeline {
+    trim(fastqs)
+    align(trim.out)
+    align.out.view()
+
+}
+```
+
+```         
+workflow my_pipeline_piped {
+
+    fastqs | trim | align | view
+
+}
+```
+
 ## Plate Based RNA-seq example
 
 Alongside a mixed donor 10x Genomics 5' single cell experiment, we
