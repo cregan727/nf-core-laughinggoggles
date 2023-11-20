@@ -52,7 +52,7 @@ cellsnp-lite \
         -R $params.regionvcf \
         -p 20 \
         --minMAF 0.1 \
-        --minCOUNT 20 \
+        --minCOUNT 5 \
         --gzip
     """
 
@@ -102,7 +102,7 @@ cellsnp-lite \
         -R $params.regionvcf \
         -p 20 \
         --minMAF 0.1 \
-        --minCOUNT 20 \
+        --minCOUNT 5 \
         --cellTAG None \
         --UMItag None \
         --genotype \
@@ -159,7 +159,7 @@ cellsnp-lite \
         -R $params.regionvcf \
         -p 20 \
         --minMAF 0.1 \
-        --minCOUNT 20 \
+        --minCOUNT 5 \
         --genotype \
         --gzip
         
