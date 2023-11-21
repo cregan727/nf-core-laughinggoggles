@@ -14,6 +14,7 @@ workflow {
     params.samplesheet = params.samplesheet ?: 'samplesheet.csv'
     params.regionvcf = params.regionvcf ?: 'regions.vcf.gz'
     params.publishDir = params.publishDir ?: 'Results'
+    params.minUMI = params.minUMI ?: 20
 
 
     if (workflowChoice == 'ref_bams') {
