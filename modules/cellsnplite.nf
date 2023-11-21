@@ -39,6 +39,7 @@ container {
         file(bai),
 	file(barcodes),
     file(regionvcf)
+    params.minUMI
 
   output:
     path "${sample}_outdir/"
@@ -52,7 +53,7 @@ cellsnp-lite \
         -R $params.regionvcf \
         -p 20 \
         --minMAF 0.1 \
-        --minCOUNT 5 \
+        --minCOUNT $params.minUMI \
         --gzip
     """
 
@@ -87,6 +88,7 @@ container {
   input:
     path bamdir
     file params.regionvcf
+    params.minUMI
 
   output:
     file "outdir/cellSNP.cells.vcf.gz"
@@ -102,7 +104,7 @@ cellsnp-lite \
         -R $params.regionvcf \
         -p 20 \
         --minMAF 0.1 \
-        --minCOUNT 5 \
+        --minCOUNT $params.minUMI \
         --cellTAG None \
         --UMItag None \
         --genotype \
@@ -144,6 +146,7 @@ container {
         file(bai),
         file(barcodes),
     file(regionvcf)
+    params.minUMI
 
   output:
     file "outdir/cellSNP.cells.vcf.gz"
@@ -159,7 +162,7 @@ cellsnp-lite \
         -R $params.regionvcf \
         -p 20 \
         --minMAF 0.1 \
-        --minCOUNT 5 \
+        --minCOUNT $params.minUMI \
         --genotype \
         --gzip
         
