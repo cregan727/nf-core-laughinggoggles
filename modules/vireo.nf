@@ -68,6 +68,7 @@ process vireo_ref {
         -c "$sample_outdir" \
         -d "$bam_cellsnp" \
         -o "\${sample_name}/vireo_results" \
+        --forceLearnGT \
         --randSeed 2 \
         -p 20
     """
