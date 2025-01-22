@@ -15,7 +15,7 @@ process vireo_reffree {
     publishDir params.publishDir, mode: 'copy'
     
     container {
-    container = 'swarbricklab/vireo_snp:0.5.6'
+    container = 'ghcr.io/cregan727/decoder_ring_vireo:latest'
     }
     
     input:
@@ -49,7 +49,7 @@ process vireo_ref {
     publishDir params.publishDir, mode: 'copy'
 
     container {
-    container = 'swarbricklab/vireo_snp:0.5.6'
+    container = 'ghcr.io/cregan727/decoder_ring_vireo:latest'
     }
 
     
