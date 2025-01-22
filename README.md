@@ -78,6 +78,8 @@ While we have not done extensive testing on how deeply to sequence your referenc
 
 Where can I get a set of SNPs to use for CellSNP? Check out this resource provided in the original python version of CellSNP: https://sourceforge.net/projects/cellsnp/files/SNPlist/ 
 
+If you're having trouble figuring out how much memory to give the pipeline try adding this nextflow option `-with-report [file name] `
+
 ### Acknowledgments  
 
 Xianjie Huang, Yuanhua Huang, Cellsnp-lite: an efficient tool for genotyping single cells, Bioinformatics, 2021;, btab358, https://doi.org/10.1093/bioinformatics/btab358  
