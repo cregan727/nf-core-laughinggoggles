@@ -30,7 +30,7 @@ process cellsnp_lite_10x {
   cpus 20
 
 container {
-    container = 'jeffverboon/cellsnplite:latest'
+    container = 'ghcr.io/cregan727/decoder_ring_cellsnplite:latest'
 }
 
   input:
@@ -82,7 +82,7 @@ process cellsnp_lite_bams {
   cpus 20
 
 container {
-    container = 'jeffverboon/cellsnplite:latest'
+    container = 'ghcr.io/cregan727/decoder_ring_cellsnplite:latest'
 }
 
   input:
@@ -138,7 +138,7 @@ process cellsnp_lite_plate {
   cpus 20
 
 container {
-    container = 'jeffverboon/cellsnplite:latest'
+    container = 'ghcr.io/cregan727/decoder_ring_cellsnplite:latest'
 }
 
   input:
